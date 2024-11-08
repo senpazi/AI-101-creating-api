@@ -5,10 +5,10 @@ import numpy as np
 app = Flask(__name__)
 
 # Load the saved model and label encoder
-with open('iris_model.pkl', 'rb') as model_file:
+with open('./model/iris_model.pkl', 'rb') as model_file:
     model = pickle.load(model_file)
 
-with open('label_encoder.pkl', 'rb') as le_file:
+with open('./model/label_encoder.pkl', 'rb') as le_file:
     label_encoder = pickle.load(le_file)
 
 @app.route('/predict', methods=['POST'])
@@ -39,4 +39,4 @@ def test():
     return jsonify({'test result': '6 ziit'})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000)
